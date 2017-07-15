@@ -44,7 +44,7 @@
 					delta = delta + 1;
 
 				}
-
+              
 			},10);
 		event.preventDefault();
 	};
