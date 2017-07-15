@@ -9,13 +9,9 @@
 	});	
 
 	var moveToSpecific = function(){
-		console.log(this);
 		console.log(this.id + " is called ");
-		console.log(this.href.lastIndexOf('#'));
-
 
 		 var m = this.href.lastIndexOf('#');
-		 console.log(m);
 		 
 		 var id = this.href.slice(m+1);
 		 var offsets = document.getElementById(id).getBoundingClientRect();
@@ -23,24 +19,30 @@
 		var top = offsets.top;
 		var left = offsets.left;
 		 console.log("id "+id);
-		 console.log("top "+top);
+		 console.log("desired "+top);
+		 console.log("current : "+window.scrollY);
+
+		var delta = window.scrollY;
 		var currentY = window.scrollY;
-		var delta = currentY;
+		console.log("currentY outside "+currentY);
 
 		if(intervalId !=null){
 			clearInterval(intervalId);
 		}
 
-			console.log(window.scrollY);
-
 			intervalId = setInterval(function(){
-				var currentY = window.scrollY;
-				console.log("scpos:  "+ currentY);
-				window.scrollTo(0,delta);
-				delta = delta + 1;
-
+				
  				if(currentY >= top){
+ 					console.log("end");
 					clearInterval(intervalId);
+				}else{
+
+					currentY = window.scrollY;
+					console.log("currentPos:  "+ currentY);
+					console.log("delta "+ delta);
+					window.scrollTo(0,delta);
+					delta = delta + 1;
+
 				}
 
 			},10);
