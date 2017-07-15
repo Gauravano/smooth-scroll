@@ -46,7 +46,7 @@
 				}
 
 			},10);
-		
+		event.preventDefault();
 	};
 	
 	tag.addEventListener('click',moveToSpecific);
